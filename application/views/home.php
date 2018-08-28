@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Home</title>
+  <link href='<?php echo base_url("assets/upload/images/$favicon"); ?>' rel='shortcut icon' type='image/x-icon' />
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -65,7 +66,7 @@
           <div class="box-header with-border">
           Ini adalah aplikasi Aset Management..<br>
 			Silahkan bagi yang sudah punya akun bisa mengakses halaman login dibawah ini: <br>
-			<a href="<?php echo base_url('auth/login');?>">LOGIN</a>
+			<a href="<?php echo base_url('index.php/auth/login');?>">LOGIN</a>
           </div>
           <div class="box-body"> 
           </div>

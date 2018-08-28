@@ -48,14 +48,14 @@ class Auth extends MY_Controller
             if ($result > 0) {
                 $this->updateProfil();
                 $this->session->set_flashdata('msg', show_succ_msg('Data Profile Berhasil diubah, silakan lakukan login ulang!'));
-                redirect('auth/profile');
+                redirect('index.php/auth/profile');
             } else {
                 $this->session->set_flashdata('msg', show_err_msg('Data Profile Gagal diubah'));
-                redirect('auth/profile');
+                redirect('index.php/auth/profile');
             }
         } else {
             $this->session->set_flashdata('msg', show_err_msg(validation_errors()));
-            redirect('auth/profile');
+            redirect('index.php/auth/profile');
         }
     }
 
@@ -70,26 +70,26 @@ class Auth extends MY_Controller
             if (password_verify($this->input->post('passLama'), $this->session->userdata('password'))) {
                 if ($this->input->post('passBaru') != $this->input->post('passKonf')) {
                     $this->session->set_flashdata('msg', show_err_msg('Password Baru dan Konfirmasi Password harus sama'));
-                    redirect('auth/profile');
+                    redirect('index.php/auth/profile');
                 } else {
                     $data = ['password' => get_hash($this->input->post('passBaru'))];
                     $result = $this->Auth_model->update($data, $id);
                     if ($result > 0) {
                         $this->updateProfil();
                         $this->session->set_flashdata('msg', show_succ_msg('Password Berhasil diubah'));
-                        redirect('auth/profile');
+                        redirect('index.php/auth/profile');
                     } else {
                         $this->session->set_flashdata('msg', show_err_msg('Password Gagal diubah'));
-                        redirect('auth/profile');
+                        redirect('index.php/auth/profile');
                     }
                 }
             } else {
                 $this->session->set_flashdata('msg', show_err_msg('Password Salah'));
-                redirect('auth/profile');
+                redirect('index.php/auth/profile');
             }
         } else {
             $this->session->set_flashdata('msg', show_err_msg(validation_errors()));
-            redirect('auth/profile');
+            redirect('index.php/auth/profile');
         }
     }
 
@@ -105,7 +105,7 @@ class Auth extends MY_Controller
 
         if (!$this->upload->do_upload('photo')) {
             $this->session->set_flashdata('msg', $this->upload->display_errors('', ''));
-            redirect('auth/profile');
+            redirect('index.php/auth/profile');
         }
         return $this->upload->data('file_name');
     }
@@ -119,7 +119,6 @@ class Auth extends MY_Controller
     public function check_register()
     {
         $data = konfigurasi('Register');
-        $this->form_validation->set_rules('first_name', 'Nama', 'trim|required|min_length[1]|max_length[50]');
         $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]|max_length[50]');
         $this->form_validation->set_rules('email', 'Email', 'trim|required|min_length[5]|max_length[50]');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[5]|max_length[20]');
@@ -137,7 +136,7 @@ class Auth extends MY_Controller
               </div>
               </p>
             ');
-            redirect('auth/login', 'refresh', $data);
+            redirect('index.php/auth/login', 'refresh', $data);
         }
     }
 
@@ -208,10 +207,10 @@ class Auth extends MY_Controller
         $data = konfigurasi('Login');
         //melakukan pengalihan halaman sesuai dengan levelnya
         if ($this->session->userdata('id_role') == "1") {
-            redirect('admin/home');
+            redirect('index.php/admin/home');
         }
         if ($this->session->userdata('id_role') == "2") {
-            redirect('member/home');
+            redirect('index.php/member/home');
         }
 
         //proses login dan validasi nya
@@ -225,9 +224,9 @@ class Auth extends MY_Controller
 
                 //jika bernilai TRUE maka alihkan halaman sesuai dengan level nya
                 if ($data->id_role == '1') {
-                    redirect('admin/home');
+                    redirect('index.php/admin/home');
                 } elseif ($data->id_role == '2') {
-                    redirect('member/home');
+                    redirect('index.php/member/home');
                 }
             } else {
                 $this->template->load('authentication/layout/template', 'authentication/login', $data);
@@ -239,6 +238,6 @@ class Auth extends MY_Controller
     public function logout()
     {
         $this->session->sess_destroy();
-        redirect('home');
+        redirect('index.php/auth/login');
     }
 }

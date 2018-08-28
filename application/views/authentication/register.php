@@ -8,12 +8,7 @@
 			<?php echo $this->session->flashdata('pesan'); ?>
 		</font>
 		<p class="login-box-msg">Register a new membership</p>
-		<?php echo form_open('auth/check_register','') ;?>
-		<div class="form-group has-feedback">
-			<input type="text" name="first_name" class="form-control" required placeholder="Nama">
-			<span class="glyphicon glyphicon-user form-control-feedback"></span>
-			<?php echo form_error('first_name','<div class="text-danger"><small>','</small></div>') ;?>
-		</div>
+		<?php echo form_open('index.php/auth/check_register','') ;?>
 		<div class="form-group has-feedback">
 			<input type="text" name="username" class="form-control" required placeholder="Username">
 			<span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -35,6 +30,6 @@
 		      <?php echo form_close() ;?>
 			</div>
 		</div>
-		<a href="<?php echo base_url('auth/login') ;?>" class="text-center">I already have a membership</a>
+		<a href="<?php echo base_url('index.php/auth/login') ;?>" class="text-center">I already have a membership</a>
 	</div>
 </div>

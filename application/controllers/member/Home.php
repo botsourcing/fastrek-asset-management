@@ -23,5 +23,4 @@ class Home extends MY_Controller
         );
         $this->template->load('layout/template', 'member/dashboard', $data);
     }
-	
 }

@@ -5,7 +5,7 @@
 	<!-- /.login-logo -->
 	<div class="login-box-body">
 		<p class="login-box-msg text-bold"> Silahkan Masukkan Email dan Password</p>
-		<form method="post" action="<?php echo base_url('auth/login'); ?>" role="login">
+		<form method="post" action="<?php echo base_url('index.php/auth/login'); ?>" role="login">
 			<div class="form-group has-feedback">
 				<input type="email" name="email" class="form-control" required minlength="5" placeholder="Email" />
 				<span class="glyphicon  glyphicon-envelope form-control-feedback"></span>
@@ -26,8 +26,8 @@
 					<button type="submit" name="submit" value="login" class="btn btn-primary btn-block btn-flat"><i class="fa fa-sign-in" aria-hidden="true"></i> Masuk</button>
 				</div>
 			</div>
-			<a href="<?php echo base_url('auth/login');?>"> Lupa Kata Sandi?</a><br>
-			<a href="<?php echo base_url('auth/register');?>"> Register</a>
+			<a href="<?php echo base_url('index.php/auth/login/#');?>"> Lupa Kata Sandi?</a><br>
+			<a href="<?php echo base_url('index.php/auth/register');?>"> Register</a>
 		</form>
 	</div>
 	<div id="myalert">
